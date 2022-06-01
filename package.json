@@ -1,0 +1,21 @@
+{
+  "name": "practicetest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "uibasics.spec.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alinasharma/hometask2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alinasharma/hometask2/issues"
+  },
+  "homepage": "https://github.com/alinasharma/hometask2#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.22.2"
+  }
+}
