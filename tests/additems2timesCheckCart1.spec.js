@@ -7,16 +7,8 @@ test('1. Test add all item in zero card two times if the count in cart',async ({
     await expect(page).toHaveTitle("Counter App");
 
 const cartitem = page.locator('.container > .card__box > .navbar > .navbar-brand > .badge');
-const firstaddbtn= page.locator('div:nth-child(2) > .row > div > .btn-secondary > .fa');
-const firstremovebtn = page.locator('div:nth-child(2) > .row > div > .btn-info > .fa');
-const secondaddbtn= page.locator('div:nth-child(3) > .row > div > .btn-secondary > .fa');
-const secondremovebtn = page.locator('div:nth-child(3) > .row > div > .btn-info > .fa');
-const thirdaddbtn= page.locator('div:nth-child(4) > .row > div > .btn-secondary > .fa');
-const fourthaddbtn= page.locator('div:nth-child(5) > .row > div > .btn-secondary > .fa');
-const refreshbtn= page.locator('.card__box > div > .row > div > .btn-success');
 const allinputfield= page.locator('.row .badge');
 const allPlusbtn= page.locator('div .btn-secondary .fa-plus-circle');
-const allremovebtn= page.locator('.btn .fa.fa.fa-minus-circle');
 const firstinputfield= page.locator('div > div:nth-child(2) > .row > div > .badge');
 const secondinputfield= page.locator('div > div:nth-child(3) > .row > div > .badge');
 const thirdinputfield= page.locator('div > div:nth-child(4) > .row > div > .badge');
@@ -24,26 +16,33 @@ const fourthinputfield= page.locator('div > div:nth-child(5) > .row > div > .bad
 
 
 const plusbtncount= await allPlusbtn.count();
+const inputfieldcount= await allinputfield.count();
+console.log("this is the count of the input field "+inputfieldcount);
 //console.log(plusbtncount);
 
-//await allPlusbtn.nth(0).click;
-//await allPlusbtn.nth(1).click;
-
-   await firstaddbtn.click();
-   await firstaddbtn.click();
-   await secondaddbtn.click();
-   await secondaddbtn.click();
-   await thirdaddbtn.click();
-   await thirdaddbtn.click();
-   await fourthaddbtn.click();
-   await fourthaddbtn.click();
-
    var totalinputfield=0;
+   for (let j=0;j<2;j++){   
+            for(let i=0;i<inputfieldcount;i++){
+                await console.log(i);
+                const eachplusbtn = await page.$$('div .btn-secondary .fa-plus-circle');
+                await eachplusbtn[i].click();
+                //console.log(await eachbtn.allTextContents());
+            }
+    }
    
+    /*
+    var allinputfieldtotal=0;
+    for(let k=0;k<inputfieldcount;k++){
+        const eachinputfield = await page.$$('.row .badge').allTextContents();
+        allinputfieldtotal = allinputfieldtotal + parseInt(await eachinputfield[k]);
+    }*/
+
+    
    var allinputfieldtotal = (parseInt(await firstinputfield.allTextContents())+
    parseInt(await secondinputfield.allTextContents())+
    parseInt(await thirdinputfield.allTextContents())+
    parseInt(await fourthinputfield.allTextContents()));
+   
    console.log(allinputfieldtotal);
 
 var finalcartValue= parseInt(await cartitem.allInnerTexts());
